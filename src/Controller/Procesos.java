@@ -10,6 +10,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 public class Procesos {
     //archivo donde estan los registros de los profesores
@@ -304,9 +305,9 @@ public class Procesos {
         return general;
     }
     
-    public String cantidad_facultad(){
+    public void cantidad_facultad(){
         SortedSet<Profesor> general = Crear_General();
-        String cadena_final = "", cadena_ingenieria = "Facultad Ingenieria.\n", cadena_deportes = "Facultad Deportes.\n", cadena_comunicacion = "Facultad Comunicacion.\n", cadena_administracion = "Facultad Administracion.\n", cadena_idiomas = "Facultad Idiomas.\n", cadena_ciencias_basicas = "Facultad Ciencias basicas.\n";
+        String cadena_ingenieria = "Facultad Ingenieria.\n", cadena_deportes = "Facultad Deportes.\n", cadena_comunicacion = "Facultad Comunicacion.\n", cadena_administracion = "Facultad Administracion.\n", cadena_idiomas = "Facultad Idiomas.\n", cadena_ciencias_basicas = "Facultad Ciencias basicas.\n";
         int cantidad_ingenieria = 0, cantidad_deportes = 0, cantidad_comunicacion = 0, cantidad_administracion = 0, cantidad_idiomas = 0, cantidad_ciencias_basicas = 0;
         for (Profesor profesor : general) {
             switch (profesor.getFacultad()) {
@@ -318,7 +319,7 @@ public class Procesos {
                     cadena_deportes += profesor.toString() + "\n";
                     cantidad_deportes++;
                 }
-                case "Comunicacion" -> {
+                case "Comunicación" -> {
                     cadena_comunicacion += profesor.toString() + "\n";
                     cantidad_comunicacion++;
                 }
@@ -334,7 +335,6 @@ public class Procesos {
                     cadena_ciencias_basicas += profesor.toString() + "\n";
                     cantidad_ciencias_basicas++;
                 }
-                default -> cadena_final = "Ha ocurrido un error";
             }
         }
         cadena_ingenieria += "Cantidad de profesores: " + cantidad_ingenieria + "\n\n";
@@ -344,9 +344,12 @@ public class Procesos {
         cadena_comunicacion += "Cantidad de profesores: " + cantidad_comunicacion + "\n\n";
         cadena_idiomas += "Cantidad de profesores: " + cantidad_idiomas + "\n\n";
         
-        cadena_final += cadena_ingenieria + cadena_administracion + cadena_ciencias_basicas + cadena_comunicacion + cadena_deportes + cadena_idiomas;
- 
-        return cadena_final;
+        JOptionPane.showMessageDialog(null, cadena_ingenieria);
+        JOptionPane.showMessageDialog(null, cadena_administracion);
+        JOptionPane.showMessageDialog(null, cadena_deportes);
+        JOptionPane.showMessageDialog(null, cadena_ciencias_basicas);
+        JOptionPane.showMessageDialog(null, cadena_comunicacion);
+        JOptionPane.showMessageDialog(null, cadena_idiomas);
     }
     
     public String CantidadPregados(){

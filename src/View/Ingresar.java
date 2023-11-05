@@ -48,13 +48,13 @@ public class Ingresar {
         Profesor.setSexo(S);
         
         //Lista desplegable de facultad
-        String VectorFacultad[] = {"Ingeniería","Deportes","Comunicación","Administración","Idiomas","Ciencias Básicas"};
+        String VectorFacultad[] = {"Ingenieria","Deportes","Comunicación","Administracion","Idiomas","Ciencias Basicas"};
         St = JOptionPane.showInputDialog(null,"Seleccione la facultad:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorFacultad, VectorFacultad[0]);
         S = St.toString();
         Profesor.setFacultad(S);
         
         //Lista desplegable de titulo
-        String VectorTitulo[] = {"Pregrado","Especialización","Maestría","Doctorado"};
+        String VectorTitulo[] = {"Pregrado","Especialista","Maestria","Doctorado"};
         St = JOptionPane.showInputDialog(null,"Seleccione el titulo de estudio:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorTitulo, VectorTitulo[0]);
         S = St.toString();
         Profesor.setTitulo(S);

@@ -10,7 +10,6 @@ public class PracticaConjuntos2 {
         String S = "";
         
         int Opc = 0;
-        System.out.println(a.Listar_tipo_contrato_unico("Ocasional"));
         do{
             Opc = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Ingresar nuevo profesor.\n"
                                                                                     + "2. Menú listar.\n"
@@ -33,7 +32,7 @@ public class PracticaConjuntos2 {
                             break;
                             
                         case "Solo un tipo y la cantidad.":
-                            String VectorSolo[] = {"Completo.","Catedra.","Ocasional"};
+                            String VectorSolo[] = {"Completo","Catedra","Ocasional"};
                             Object S2 = JOptionPane.showInputDialog(null, "Seleccione la opción a listar:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorSolo, VectorSolo[0]);;
                             Listar = S2.toString();
                             
@@ -75,8 +74,7 @@ public class PracticaConjuntos2 {
                             break;
                             
                         case "Profesores por cada facultad y su total.":
-                            S = a.cantidad_facultad();
-                            JOptionPane.showMessageDialog(null, S);
+                            a.cantidad_facultad();
                             break;
                             
                         case "Solo pregrado y la cantidad.":
