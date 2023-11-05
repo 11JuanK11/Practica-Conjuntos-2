@@ -12,22 +12,24 @@ Basicas, con una lista desplegable)
 */
 package Model;
 
-import java.util.Date;
+import java.time.*;
 import java.util.Objects;
 
-public class Profesor {
+public class Profesor implements Comparable<Profesor> {
     private int cc;
     private String nombre;
+    private String sexo;
     private String facultad;
     private String titulo;
     private String tipo_contratos;
     private int cant_asignaturas;
-    private Date horas;
-    private Date fecha_nacimiento;
+    private LocalTime horas;
+    private LocalDate fecha_nacimiento;
 
-    public Profesor(int cc, String nombre, String facultad, String titulo, String tipo_contratos, int cant_asignaturas, Date horas, Date fecha_nacimiento) {
+    public Profesor(int cc, String nombre,String sexo, String facultad, String titulo, String tipo_contratos, int cant_asignaturas, LocalTime horas, LocalDate fecha_nacimiento) {
         this.cc = cc;
         this.nombre = nombre;
+        this.sexo = sexo;
         this.facultad = facultad;
         this.titulo = titulo;
         this.tipo_contratos = tipo_contratos;
@@ -39,8 +41,6 @@ public class Profesor {
     public Profesor() {
     }
     
-    
-
     public int getCc() {
         return cc;
     }
@@ -55,6 +55,14 @@ public class Profesor {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getFacultad() {
@@ -89,19 +97,19 @@ public class Profesor {
         this.cant_asignaturas = cant_asignaturas;
     }
 
-    public Date getHoras() {
+    public LocalTime getHoras() {
         return horas;
     }
 
-    public void setHoras(Date horas) {
+    public void setHoras(LocalTime horas) {
         this.horas = horas;
     }
 
-    public Date getFecha_nacimiento() {
+    public LocalDate getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
-    public void setFecha_nacimiento(Date fecha_nacimiento) {
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
@@ -154,6 +162,18 @@ public class Profesor {
         }
         return Objects.equals(this.fecha_nacimiento, other.fecha_nacimiento);
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "cc=" + cc + ", nombre=" + nombre + ", sexo=" + sexo + ", facultad=" + facultad + ", titulo=" + titulo + ", tipo_contratos=" + tipo_contratos + ", cant_asignaturas=" + cant_asignaturas + ", horas=" + horas + ", fecha_nacimiento=" + fecha_nacimiento + '}';
+    }
+    
+
+    @Override
+    public int compareTo(Profesor o) {
+        return this.cc - o.cc;
+    }
+    
     
     
 
