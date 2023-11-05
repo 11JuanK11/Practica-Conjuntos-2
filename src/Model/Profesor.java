@@ -165,7 +165,7 @@ public class Profesor implements Comparable<Profesor> {
 
     @Override
     public String toString() {
-        return "Profesor{" + "cc=" + cc + ", nombre=" + nombre + ", sexo=" + sexo + ", facultad=" + facultad + ", titulo=" + titulo + ", tipo_contratos=" + tipo_contratos + ", cant_asignaturas=" + cant_asignaturas + ", horas=" + horas + ", fecha_nacimiento=" + fecha_nacimiento + '}';
+        return "CC: " + cc + ", Nombre: " + nombre + ", Sexo: " + sexo + ", Facultad: " + facultad + ", Titulo: " + titulo + ", Tipo de contrato: " + tipo_contratos + ", Cantidad de asignaturas: " + cant_asignaturas + ", Horas: " + horas + ", Fecha de nacimiento: " + fecha_nacimiento;
     }
     
 
