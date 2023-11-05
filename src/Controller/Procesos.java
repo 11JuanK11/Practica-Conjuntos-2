@@ -306,14 +306,47 @@ public class Procesos {
     
     public String cantidad_facultad(){
         SortedSet<Profesor> general = Crear_General();
-        String cadena = "";
-        int cantidad = 0;
+        String cadena_final = "", cadena_ingenieria = "Facultad Ingenieria.\n", cadena_deportes = "Facultad Deportes.\n", cadena_comunicacion = "Facultad Comunicacion.\n", cadena_administracion = "Facultad Administracion.\n", cadena_idiomas = "Facultad Idiomas.\n", cadena_ciencias_basicas = "Facultad Ciencias basicas.\n";
+        int cantidad_ingenieria = 0, cantidad_deportes = 0, cantidad_comunicacion = 0, cantidad_administracion = 0, cantidad_idiomas = 0, cantidad_ciencias_basicas = 0;
         for (Profesor profesor : general) {
-            if (profesor.getFacultad().equalsIgnoreCase("Ingenieria")) {
-                
+            switch (profesor.getFacultad()) {
+                case "Ingenieria" -> {
+                    cadena_ingenieria += profesor.toString() + "\n";
+                    cantidad_ingenieria++;
+                }
+                case "Deportes" -> {
+                    cadena_deportes += profesor.toString() + "\n";
+                    cantidad_deportes++;
+                }
+                case "Comunicacion" -> {
+                    cadena_comunicacion += profesor.toString() + "\n";
+                    cantidad_comunicacion++;
+                }
+                case "Administracion" -> {
+                    cadena_administracion += profesor.toString() + "\n";
+                    cantidad_administracion++;
+                }
+                case "Idiomas" -> {
+                    cadena_idiomas += profesor.toString() + "\n";
+                    cantidad_idiomas++;
+                }
+                case "Ciencias Basicas" -> {
+                    cadena_ciencias_basicas += profesor.toString() + "\n";
+                    cantidad_ciencias_basicas++;
+                }
+                default -> cadena_final = "Ha ocurrido un error";
             }
         }
-        return "";
+        cadena_ingenieria += "Cantidad de profesores: " + cantidad_ingenieria + "\n\n";
+        cadena_administracion += "Cantidad de profesores: " + cantidad_administracion + "\n\n";
+        cadena_deportes += "Cantidad de profesores: " + cantidad_deportes + "\n\n";
+        cadena_ciencias_basicas += "Cantidad de profesores: " + cantidad_ciencias_basicas + "\n\n";
+        cadena_comunicacion += "Cantidad de profesores: " + cantidad_comunicacion + "\n\n";
+        cadena_idiomas += "Cantidad de profesores: " + cantidad_idiomas + "\n\n";
+        
+        cadena_final += cadena_ingenieria + cadena_administracion + cadena_ciencias_basicas + cadena_comunicacion + cadena_deportes + cadena_idiomas;
+ 
+        return cadena_final;
     }
     
     public String CantidadPregados(){

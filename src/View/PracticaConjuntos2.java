@@ -10,7 +10,7 @@ public class PracticaConjuntos2 {
         String S = "";
         
         int Opc = 0;
-        
+        System.out.println(a.Listar_tipo_contrato_unico("Ocasional"));
         do{
             Opc = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Ingresar nuevo profesor.\n"
                                                                                     + "2. Menú listar.\n"

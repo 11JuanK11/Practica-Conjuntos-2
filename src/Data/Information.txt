@@ -1,2 +1,30 @@
-1022,juan k,Masculino,Ingenieria,Pregrado,Ocasional;Catedra;Completo,3,10,2005-03-15
-1023,juan c,Masculino,Ingenieria,Pregrado,Ocasional;Completo,4,13,2005-03-16
+1,John Doe,Masculino,Ingenieria,Doctorado,Catedra,5,10,1980-08-25
+2,Jane Smith,Femenino,Deportes,Especialista,Catedra,8,15,1975-07-14
+3,Michael Johnson,Masculino,Comunicación,Pregrado,Catedra,3,8,1990-11-30
+4,Sophia Garcia,Femenino,Administracion,Doctorado,Catedra,4,12,1988-06-02
+5,William Brown,Masculino,Idiomas,Especialista,Catedra,6,10,1972-09-15
+6,Olivia Davis,Femenino,Ciencias Basicas,Doctorado,Catedra,9,20,1985-04-20
+7,James Wilson,Masculino,Ingenieria,Maestria,Catedra,7,14,1977-12-01
+8,Emily Taylor,Femenino,Deportes,Especialista,Catedra,4,8,1993-06-11
+9,Alexander Martinez,Masculino,Comunicación,Pregrado,Catedra,6,10,1986-10-18
+10,Chloe Anderson,Femenino,Administracion,Doctorado,Catedra,5,12,1983-03-25
+11,Aiden Adams,Masculino,Idiomas,Especialista,Ocasional,3,6,1997-12-08
+12,Mia Thomas,Femenino,Ciencias Basicas,Pregrado,Ocasional,5,9,1995-08-04
+13,Noah Collins,Masculino,Ingenieria,Maestria,Ocasional,7,10,1993-02-27
+14,Isabella Baker,Femenino,Deportes,Doctorado,Ocasional,6,15,1999-06-30
+15,Ethan Rivera,Masculino,Administracion,Pregrado,Ocasional,4,8,1990-11-15
+16,Ava Ward,Femenino,Comunicación,Doctorado,Ocasional,8,10,1988-05-19
+17,Liam Young,Masculino,Idiomas,Pregrado,Ocasional,5,12,1996-03-25
+18,Sophia Stewart,Femenino,Ciencias Basicas,Especialista,Ocasional,7,18,1994-09-12
+19,Logan Mitchell,Masculino,Deportes,Doctorado,Ocasional,6,10,1999-01-22
+20,Olivia Perez,Femenino,Comunicación,Pregrado,Ocasional,4,8,1987-10-10
+21,Lucas Hill,Masculino,Ingenieria,Doctorado,Completo,9,14,1982-04-05
+22,Lily Price,Femenino,Deportes,Pregrado,Completo,5,10,1984-07-17
+23,Mason Turner,Masculino,Administracion,Especialista,Completo,7,12,1979-10-03
+24,Grace Stewart,Femenino,Comunicación,Pregrado,Completo,4,8,1972-08-26
+25,Oliver Thompson,Masculino,Idiomas,Maestria,Completo,6,12,1983-11-30
+26,Scarlett Simmons,Femenino,Ciencias Basicas,Doctorado,Completo,8,16,1975-12-15
+27,Jack Foster,Masculino,Ingenieria,Especialista,Completo,9,18,1981-01-14
+28,Aria Murphy,Femenino,Deportes,Doctorado,Completo,7,10,1976-09-08
+29,Lincoln Bell,Masculino,Comunicación,Pregrado,Completo,6,14,1973-06-22
+30,Ella Carter,Femenino,Administracion,Maestria,Completo,5,10,1978-05-11
