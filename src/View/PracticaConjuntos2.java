@@ -75,7 +75,7 @@ public class PracticaConjuntos2 {
                             break;
                             
                         case "Profesores por cada facultad y su total.":
-                            //Llamar el metodo
+                            S = a.cantidad_facultad();
                             JOptionPane.showMessageDialog(null, S);
                             break;
                             
