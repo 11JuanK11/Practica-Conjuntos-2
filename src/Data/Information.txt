@@ -1,1 +1,2 @@
-1022,juan k,masculino,ingenieria,pregrado,ocasional;catedra;completo,3,10,15-03-2005
+1022,juan k,Masculino,Ingenieria,Pregrado,Ocasional;Catedra;Completo,3,10,2005-03-15
+1023,juan c,Masculino,Ingenieria,Pregrado,Ocasional;Completo,4,13,2005-03-16

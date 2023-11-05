@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Matcher;
@@ -12,16 +13,15 @@ import java.util.regex.Pattern;
 
 public class Procesos {
     //archivo donde estan los registros de los profesores
-    File F = new File("./src/Data/Information.txt");
+    private File F = new File("./src/Data/Information.txt");
     //conjuntos donde se almacenaran los profesores
     public SortedSet<Profesor> profes_tiempo_completo = new TreeSet();
     public SortedSet<Profesor> profes_ocasional = new TreeSet();
     public SortedSet<Profesor> profes_catedra = new TreeSet();
-    
     //metodo constructor
     public Procesos(){
         SortedSet<Profesor> general = recuperar_informacion();
-        Pattern patron1 = Pattern.compile("ocasional"), patron2 = Pattern.compile("catedra"), patron3 = Pattern.compile("completo");
+        Pattern patron1 = Pattern.compile("Ocasional"), patron2 = Pattern.compile("Catedra"), patron3 = Pattern.compile("Completo");
         Matcher emparejador;
         for (Profesor profesor : general) {
             //comparacion para agregar a conjunto de profesores con tipo contrato ocasional
@@ -39,15 +39,15 @@ public class Procesos {
             if (emparejador.find()) {
                 profes_tiempo_completo.add(profesor);
             }
-        }
+        }      
     }
-    
+     
     //recupera la informacion del archivo plano
     private SortedSet<Profesor> recuperar_informacion(){
         SortedSet<Profesor> general = new TreeSet<>();
         try {
             String iteracion = "";
-            String[] vector, vector_fecha;
+            String[] vector;
             FileReader archivo = new FileReader(F);
             BufferedReader lector = new BufferedReader(archivo);
             while (iteracion != null) {  
@@ -64,8 +64,7 @@ public class Procesos {
                     auxiliar.setCant_asignaturas(Integer.parseInt(vector[6]));
                     LocalTime hora = LocalTime.of( Integer.parseInt(vector[7]), 0);
                     auxiliar.setHoras(hora);
-                    vector_fecha = vector[8].split("-");
-                    LocalDate fecha = LocalDate.of(Integer.parseInt(vector_fecha[2]), Integer.parseInt(vector_fecha[1]), Integer.parseInt(vector_fecha[0]));
+                    LocalDate fecha = LocalDate.parse(vector[8]);
                     auxiliar.setFecha_nacimiento(fecha);
                     general.add(auxiliar);
                 }      
@@ -74,7 +73,7 @@ public class Procesos {
         } catch (Exception e) {
             System.out.println("pum");
         }
-        return general;
+        return general;   
     }
     
     public boolean Cedula(String Cedula){
@@ -153,5 +152,167 @@ public class Procesos {
             if (emparejador.find()) {
                 profes_tiempo_completo.add(profesor);
             }
+    }
+    
+    public String Listar_tipo_contrato_unico(String contrato){
+        Pattern patron = Pattern.compile(contrato);
+        Matcher emparejador;
+        int contador = 0;
+        String cadena = "";
+        switch (contrato) {
+            case "Catedra" -> {
+                for (Profesor profesor : profes_catedra) {
+                    emparejador = patron.matcher(profesor.getTipo_contratos());
+                    if (emparejador.matches()) {
+                        contador++;
+                        cadena += profesor.toString() + "\n";
+                    }
+                }
+                cadena+= "Numero de profesores con contrato de catedra: " + contador;
+            }
+            case "Completo" -> {
+                for (Profesor profesor : profes_tiempo_completo) {
+                    emparejador = patron.matcher(profesor.getTipo_contratos());
+                    if (emparejador.matches()) {
+                        contador++;
+                        cadena += profesor.toString() + "\n";
+                    }
+                }   
+                cadena+= "Numero de profesores con contrato de tiempo completo: " + contador; 
+            }
+            case "Ocasional" -> {
+                for (Profesor profesor : profes_ocasional) {
+                    emparejador = patron.matcher(profesor.getTipo_contratos());
+                    if (emparejador.matches()) {
+                        contador++;
+                        cadena += profesor.toString() + "\n";
+                    }
+                }
+                cadena+= "Numero de profesores con contrato ocasional: " + contador;
+            }
+            default -> cadena = "";
+        }
+        if (!cadena.equals("")) {
+            return cadena;
+        }else{
+            return "No se han encontrado algun profesor con esa condicion";
+        }
+    }
+    
+    public String Listar_Profesores(){
+        SortedSet<Profesor> general = Crear_General();
+        String cadena = "";
+        
+        for (Profesor profesor : general) {
+            cadena += profesor.toString()+ "\n";
+        }
+        cadena += "Numero total de profesores: " + general.size();
+        return cadena;
+    }
+    
+    public String Listar_tipo_contrato_combinado(int opcion){
+        String cadena = "";
+        int contador = 0;
+        switch (opcion) {
+            case 1 -> {
+                //Catedra y ocasional
+                for (Profesor profesor : profes_ocasional) {
+                    if (profes_catedra.contains(profesor) && !profes_tiempo_completo.contains(profesor)) {
+                        cadena += profesor.toString() + "\n";
+                        contador++;
+                    }   
+                }
+                cadena += "Cantidad de profesores con contrato de catedra y ocasional: " + contador;
+            }
+            case 2 -> {
+                //catedra y tiempo completo
+                for (Profesor profesor : profes_tiempo_completo) {
+                    if (profes_catedra.contains(profesor) && !profes_ocasional.contains(profesor)) {
+                        cadena += profesor.toString() + "\n";
+                        contador++;
+                    }   
+                }
+                cadena += "Cantidad de profesores con contrato de catedra y tiempo completo: " + contador;
+            }
+            case 3 -> {
+                //tiempo completo y ocasional
+                for (Profesor profesor : profes_ocasional) {
+                    if (profes_tiempo_completo.contains(profesor) && !profes_catedra.contains(profesor)) {
+                        cadena += profesor.toString() + "\n";
+                        contador++;
+                    }   
+                }
+                cadena += "Cantidad de profesores con contrato de tiempo completo y ocasional: " + contador;
+            }
+            case 4 -> {
+                //todos los tipos de contrato
+                for (Profesor profesor : profes_ocasional) {
+                    if (profes_tiempo_completo.contains(profesor) && profes_catedra.contains(profesor)) {
+                        cadena += profesor.toString() + "\n";
+                        contador++;
+                    }   
+                }
+                cadena += "Cantidad de profesores con contrato de tiempo completo, ocasional y de catedra: " + contador;
+            }
+            default -> cadena = "Ha ocurrido un error";     
+        }
+        
+        return cadena;
+    }
+    
+    public String cantidad_sexos_contrato(){
+        String cadena = "";
+        int contador_hombres = 0, contador_mujeres = 0;
+        for (Profesor profesor : profes_tiempo_completo) {
+            if(profesor.getSexo().equalsIgnoreCase("Masculino")){
+                contador_hombres++;
+            }else{
+                contador_mujeres++;
+            }
+        }
+        cadena += "Contrato de tiempo completo.\n";
+        cadena += "Cantidad de hombres: " + contador_hombres + "\nCantidad de mujeres: "+ contador_mujeres + "\n\n"; 
+        contador_hombres = 0;
+        contador_mujeres = 0;
+        for (Profesor profesor : profes_ocasional) {
+            if(profesor.getSexo().equalsIgnoreCase("Masculino")){
+                contador_hombres++;
+            }else{
+                contador_mujeres++;
+            }
+        }
+        cadena += "Contrato ocasional.\n";
+        cadena += "Cantidad de hombres: " + contador_hombres + "\nCantidad de mujeres: "+ contador_mujeres + "\n\n"; 
+        contador_hombres = 0;
+        contador_mujeres = 0;
+        for (Profesor profesor : profes_catedra) {
+            if(profesor.getSexo().equalsIgnoreCase("Masculino")){
+                contador_hombres++;
+            }else{
+                contador_mujeres++;
+            }
+        }
+        cadena += "Contrato de catedra.\n";
+        cadena += "Cantidad de hombres: " + contador_hombres + "\nCantidad de mujeres: "+ contador_mujeres;  
+        return cadena;
+    }
+    
+    private SortedSet<Profesor> Crear_General(){
+        SortedSet<Profesor> general = new TreeSet<>(profes_catedra);
+        general.addAll(profes_ocasional);
+        general.addAll(profes_tiempo_completo);
+        return general;
+    }
+    
+    public String cantidad_facultad(){
+        SortedSet<Profesor> general = Crear_General();
+        String cadena = "";
+        int cantidad = 0;
+        for (Profesor profesor : general) {
+            if (profesor.getFacultad().equalsIgnoreCase("Ingenieria")) {
+                
+            }
+        }
+        return "";
     }
 }
