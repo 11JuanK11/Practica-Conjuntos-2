@@ -10,10 +10,6 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author 57301
- */
 public class Procesos {
     //archivo donde estan los registros de los profesores
     File F = new File("./src/Data/Information.txt");
@@ -81,6 +77,81 @@ public class Procesos {
         return general;
     }
     
+    public boolean Cedula(String Cedula){
+        boolean Cumple = false;
+        Pattern Validar = Pattern.compile("[0-9]+");
+
+        Matcher ComparacionCedula = Validar.matcher(Cedula);
+        if (ComparacionCedula.matches()){
+            Cumple = true;
+        }
+        return Cumple;
+    }
     
+    public boolean NombreCompleto(String Nombre){
+        boolean Cumple = false;
+        Pattern Validar = Pattern.compile("([a-zA-Z]+\\s?[a-zA-Z]*)+");
+        
+        Matcher ComparacionNombre = Validar.matcher(Nombre);
+        if (ComparacionNombre.matches()){
+            Cumple = true;
+        }  
+        return Cumple;
+    }
     
+    public boolean CantidadAsignaturas(String Asignatura){
+        boolean Cumple = false;
+        Pattern Validar = Pattern.compile("[1-9]{1}|10");
+        
+        Matcher ComparacionAsignatura = Validar.matcher(Asignatura);
+        if (ComparacionAsignatura.matches()){
+            Cumple = true;
+        }
+        return Cumple;
+    }
+    
+    public boolean CantidadHoras(String Horas){
+        boolean Cumple = false;
+        Pattern Validar = Pattern.compile("0?[1-9]{1}|10|(1[1-9]){1}|20");
+        
+        Matcher ComparacionHoras = Validar.matcher(Horas);
+        if (ComparacionHoras.matches()){
+            Cumple = true;
+        }
+        return Cumple;
+    }
+    
+    public boolean FechaNacimiento(String Fecha){
+        boolean Cumple = false;
+        Pattern Validar = Pattern.compile("d{4}-\\d{2}-\\d{2}");
+        
+        Matcher ComparacionFecha = Validar.matcher(Fecha);
+        if (ComparacionFecha.matches()){
+            Cumple = true;
+        }
+        return Cumple;
+    }
+    
+    public void Agregar(Profesor profesor){
+        Pattern patron1 = Pattern.compile("Ocasional"), patron2 = Pattern.compile("Catedra"), patron3 = Pattern.compile("Completo");
+        Matcher emparejador;
+        
+            //comparacion para agregar a conjunto de profesores con tipo contrato ocasional
+            emparejador = patron1.matcher(profesor.getTipo_contratos());
+            if (emparejador.find()) {
+                profes_ocasional.add(profesor);
+            }
+            
+            //comparacion para agregar a conjunto de profesores con tipo contrato catedra
+            emparejador = patron2.matcher(profesor.getTipo_contratos());
+            if (emparejador.find()) {
+                profes_catedra.add(profesor);
+            }
+            
+            //comparacion para agregar a conjunto de profesores con tipo contrato completo
+            emparejador = patron3.matcher(profesor.getTipo_contratos());
+            if (emparejador.find()) {
+                profes_tiempo_completo.add(profesor);
+            }
+    }
 }

@@ -1,15 +1,3 @@
-/*
-Cedula (validar con expresión regular de solo números)
-- Nombre completo ( Validar con expresión regular solo letras)
-- Sexo (Validar lista desplegable Masculino o Femenino)
-- Facultad (Ingenieria, Deportes, Comunicación, Administracion, Idiomas, Ciencias
-Basicas, con una lista desplegable)
-- Titulo (Pregrado, Especialista, maestria, Doctorado, con lista desplegable)
-- Cantidad de asignaturas que dicta- Validar con expresion regular-rango de 1-10
-- Cantidad de horas dictadas por semana- Validar con expresion regular-rango de 1-20
-- Fecha nacimiento (Validar con expresión regular fecha valida)
-
-*/
 package Model;
 
 import java.time.*;
@@ -168,14 +156,8 @@ public class Profesor implements Comparable<Profesor> {
         return "Profesor{" + "cc=" + cc + ", nombre=" + nombre + ", sexo=" + sexo + ", facultad=" + facultad + ", titulo=" + titulo + ", tipo_contratos=" + tipo_contratos + ", cant_asignaturas=" + cant_asignaturas + ", horas=" + horas + ", fecha_nacimiento=" + fecha_nacimiento + '}';
     }
     
-
     @Override
     public int compareTo(Profesor o) {
         return this.cc - o.cc;
-    }
-    
-    
-    
-
-   
+    } 
 }
