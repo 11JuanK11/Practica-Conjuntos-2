@@ -7,9 +7,8 @@ public class PracticaConjuntos2 {
 
     public static void main(String[] args) {
         Procesos a = new Procesos();
-        
         int Opc = 0;
-        
+        System.out.println(a.Listar_tipo_contrato_unico("Ocasional"));
         do{
             Opc = Integer.parseInt(JOptionPane.showInputDialog(null, "1. Ingresar nuevo profesor.\n"
                                                                                     + "2. Menú listar.\n"
@@ -68,7 +67,7 @@ public class PracticaConjuntos2 {
                             break;
                             
                         case "Profesores por cada facultad y su total.":
-                            //Llamar el metodo
+                            S = a.cantidad_facultad();
                             break;
                     }
                     
