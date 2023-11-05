@@ -15,7 +15,7 @@ public class Ingresar {
         
         //Pide el tipo de contrato con lista desplegable
         String VectorTipoContrato[] = {"Completo","Catedra","Ocasional","Completo;Catedra","Completo;Ocasional","Catedra;Ocasional","Completo;Catedra;Ocasional"};
-        Object St = JOptionPane.showInputDialog(null, "Seleccione el género:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorTipoContrato, VectorTipoContrato[0]);
+        Object St = JOptionPane.showInputDialog(null, "Seleccione el tipo de contrato:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorTipoContrato, VectorTipoContrato[0]);
         S = St.toString();
         Profesor.setTipo_contratos(S);
         
@@ -48,13 +48,13 @@ public class Ingresar {
         Profesor.setSexo(S);
         
         //Lista desplegable de facultad
-        String VectorFacultad[] = {"Ingenieria","Deportes","Comunicación","Administracion","Idiomas","Ciencias Basicas"};
+        String VectorFacultad[] = {"Ingeniería","Deportes","Comunicación","Administración","Idiomas","Ciencias Básicas"};
         St = JOptionPane.showInputDialog(null,"Seleccione la facultad:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorFacultad, VectorFacultad[0]);
         S = St.toString();
         Profesor.setFacultad(S);
         
         //Lista desplegable de titulo
-        String VectorTitulo[] = {"Pregado","Especialista","Maestría","Doctorado"};
+        String VectorTitulo[] = {"Pregrado","Especialización","Maestría","Doctorado"};
         St = JOptionPane.showInputDialog(null,"Seleccione el titulo de estudio:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorTitulo, VectorTitulo[0]);
         S = St.toString();
         Profesor.setTitulo(S);

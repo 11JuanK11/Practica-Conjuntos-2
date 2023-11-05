@@ -122,7 +122,7 @@ public class Procesos {
     
     public boolean FechaNacimiento(String Fecha){
         boolean Cumple = false;
-        Pattern Validar = Pattern.compile("d{4}-\\d{2}-\\d{2}");
+        Pattern Validar = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
         
         Matcher ComparacionFecha = Validar.matcher(Fecha);
         if (ComparacionFecha.matches()){
@@ -315,4 +315,19 @@ public class Procesos {
         }
         return "";
     }
+    
+    public String CantidadPregados(){
+        SortedSet<Profesor> general = Crear_General();
+        String S = "";
+        int Cant = 0;
+        
+        for (Profesor profesor : general) {
+            if (profesor.getTitulo().equalsIgnoreCase("Pregrado")){
+                Cant++;
+                S += profesor.toString() + "\n";
+            }
+        }
+        S += "\nCantidad total: " + Cant;   
+        return S;
+    } 
 }

@@ -7,6 +7,7 @@ public class PracticaConjuntos2 {
 
     public static void main(String[] args) {
         Procesos a = new Procesos();
+        String S = "";
         
         int Opc = 0;
         
@@ -21,13 +22,14 @@ public class PracticaConjuntos2 {
                     break;
                 
                 case 2:
-                    String Vector[] = {"Todos y el total.","Solo un tipo y la cantidad.","Contratos combinados y el total.","Cantidad de hombres y mujeres por contrato.","Profesores por cada facultad y su total."};
+                    String Vector[] = {"Todos y el total.","Solo un tipo y la cantidad.","Contratos combinados y el total.","Cantidad de hombres y mujeres por contrato.","Profesores por cada facultad y su total.","Solo pregrado y la cantidad."};
                     Object S1 = JOptionPane.showInputDialog(null, "Escoja lo que desea listar:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,Vector, Vector[0]);
                     String Listar = S1.toString();
                     
                     switch (Listar){
                         case "Todos y el total.": 
-                            //Llamar metodo                            
+                            S = a.Listar_Profesores();
+                            JOptionPane.showMessageDialog(null, S);
                             break;
                             
                         case "Solo un tipo y la cantidad.":
@@ -35,8 +37,8 @@ public class PracticaConjuntos2 {
                             Object S2 = JOptionPane.showInputDialog(null, "Seleccione la opción a listar:", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,VectorSolo, VectorSolo[0]);;
                             Listar = S2.toString();
                             
-                            //LLamar metodo
-                            
+                            S = a.Listar_tipo_contrato_unico(Listar);
+                            JOptionPane.showMessageDialog(null, S);
                             break;
                             
                         case "Contratos combinados y el total.":
@@ -46,29 +48,40 @@ public class PracticaConjuntos2 {
                             
                             switch (Listar){
                                 case "Catedra y Ocasional":
-                                    //Llamar metodo con 1
+                                    S = a.Listar_tipo_contrato_combinado(1);
+                                    JOptionPane.showMessageDialog(null, S);
                                     break;
                                     
                                 case "Completo y Catedra":
-                                    //Llamar metodo con 2
+                                    S = a.Listar_tipo_contrato_combinado(2);
+                                    JOptionPane.showMessageDialog(null, S);
                                     break;
                                     
                                 case "Ocasional y Completo":
-                                    //Llamar metodo con 3
+                                    S = a.Listar_tipo_contrato_combinado(3);
+                                    JOptionPane.showMessageDialog(null, S);
                                     break;
                                     
                                 case "Completo, Catedra y Ocasional":
-                                    //Llamar metodo con 4
+                                    S = a.Listar_tipo_contrato_combinado(4);
+                                    JOptionPane.showMessageDialog(null, S);
                                     break;
                             }
                             break;
                             
                         case "Cantidad de hombres y mujeres por contrato.": 
-                            //Llamar metodo
+                            S = a.cantidad_sexos_contrato();
+                            JOptionPane.showMessageDialog(null, S);
                             break;
                             
                         case "Profesores por cada facultad y su total.":
                             //Llamar el metodo
+                            JOptionPane.showMessageDialog(null, S);
+                            break;
+                            
+                        case "Solo pregrado y la cantidad.":
+                            S = a.CantidadPregados();
+                            JOptionPane.showMessageDialog(null, S);
                             break;
                     }
                     
