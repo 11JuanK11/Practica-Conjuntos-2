@@ -11,6 +11,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import java.util.SortedSet;
 
 public class Procesos {
     //archivo donde estan los registros de los profesores
@@ -352,7 +353,7 @@ public class Procesos {
         JOptionPane.showMessageDialog(null, cadena_idiomas);
     }
     
-    public String CantidadPregados(){
+    public String CantidadPregados1(){
         SortedSet<Profesor> general = Crear_General();
         String S = "";
         int Cant = 0;
@@ -366,4 +367,34 @@ public class Procesos {
         S += "\nCantidad total: " + Cant;   
         return S;
     } 
+
+    public String CantidadPregados() {
+        SortedSet<Profesor> general = Crear_General();
+        StringBuilder resultado = new StringBuilder();
+        int cant = 0;
+
+        // Estructura para almacenar la frecuencia detallada
+        int[] frecuenciaDetallada = new int[general.size()];
+
+        int i = 0;
+        for (Profesor profesor : general) {
+            if (profesor.getTitulo().equalsIgnoreCase("Pregrado")) {
+                cant++;
+                resultado.append(profesor.toString()).append("\n");
+
+                // Almacenar la frecuencia detallada
+                frecuenciaDetallada[i]++;
+                i++;
+            }
+        }
+
+        // Agregar información detallada al resultado
+        for (int j = 0; j < frecuenciaDetallada.length; j++) {
+            resultado.append("Cantidad en la iteración ").append(j + 1).append(": ").append(frecuenciaDetallada[j]).append("\n");
+        }
+
+        resultado.append("\nCantidad total: ").append(cant);
+        return resultado.toString();
+    }
 }
+

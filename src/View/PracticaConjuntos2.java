@@ -8,6 +8,7 @@ public class PracticaConjuntos2 {
     public static void main(String[] args) {
         Procesos a = new Procesos();
         String S = "";
+        int Comp = 0;
         
         int Opc = 0;
         do{
@@ -18,6 +19,7 @@ public class PracticaConjuntos2 {
             switch (Opc) {
                 case 1:
                     a = Ingresar.IngresarNuevo(a);
+                    Comp++;
                     break;
                 
                 case 2:
